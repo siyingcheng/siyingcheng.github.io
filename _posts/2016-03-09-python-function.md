@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Python笔记 -- 函数"
-date:   2016-03-09 15:06:05
+title:  "Python 函数"
+date:   2016-03-02 20:06:05
 categories: Python
 excerpt: Python学习笔记————Python函数
 ---
