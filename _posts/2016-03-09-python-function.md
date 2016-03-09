@@ -131,3 +131,21 @@ console:
 当我们调用函数`employee_info()`时，命名关键字参数必须带上关键词一并传入，否则python当传入的参数为位置参数一并处理。 比如`employee_info("owen", 28, "ChengDu", 12000.88)`去掉关键字后，就不对了，python会提示位置参数个数不对。
 
 当然命名关键字参数也是可以指定默认值的，例如定义函数时:`def employee_info(name, age, *, city = 'BeiJing', salary):`,这样，调用函数时，可以省略`city`关键字参数。函数内部会将`city`参数的值设置为`BeiJing`.
+
+### 递归函数
+
+和其他语言一样，Python中有递归函数的概念，不过递归函数在使用时要注意避免栈溢出。所以，虽然递归函数简单明了，但建议能不使用则避免使用。
+
+    def recursion_func(n):
+        if n == 1:
+            return 1
+        else:
+            return n * recursion_func(n - 1)
+
+    an = recursion_func(5)
+    print(an)
+
+这是求n的阶乘的例子，console上计算的结果是：
+
+    F:\py>python functions.py
+    120
