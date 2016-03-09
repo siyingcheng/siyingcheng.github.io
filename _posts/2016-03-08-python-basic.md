@@ -124,3 +124,239 @@ console：
 
     F:\py>python hello.py
     True False
+
+### 空值
+空值`None`是Python中特殊的值。
+
+### 逻辑运算
+Python中提供了`and`、`or`、`not`等逻辑运算，其运算结果为布尔型。
+
+    >>> False and True
+    False
+    >>> False or True
+    True
+    >>> not True
+    False
+    >>> 1 > 2
+    False
+
+---
+
+### 变量
+Python为动态语言，给变量赋值时，变量会自动匹配变量的类型。
+
+同时，给变量赋值，是引用关系，现在看起来比较像指针。
+
+
+    >>> str1 = 'abc' #在内存中创建一个'abc'的字符串, 并引用给str1(str1指向'abc')
+    >>> str2 = str1  #把str1的引用赋值给str2, 也就是str2也指向'abc'
+    >>> str1, str2
+    ('abc', 'abc')
+    >>> str1 = 'xyz' #改变str1的指向，让其指向字符串'xyz'
+    >>> str1, str2
+    ('xyz', 'abc')   #这里我们发现，str1的指向改变，并不str2，所以判断python中赋值，是引用关系，相当于C语言中的指针
+    >>> 
+
+### 两种除法运算
+Python提供两种不同的除法运算,一种是普通除法`/`,和C语言中不同的是，python中的除法，即便两个数都是整数，结果依然是浮点型。
+
+    >>> 10 /3
+    3.3333333333333335
+
+Python还提供了一种叫*地板除法*`//`,其结果是舍去小数部分的整数：
+
+    >>> 10 // 3
+    3
+    >>> 11 // 3
+    3
+    >>> 
+
+
+---
+
+### 字符串和编码
+python 3中，字符串是以Unicode编码的，存储文件时为了节省空间，可以使用可变长度的编码格式`UTF-8`。
+
+    >>> ord('中') #ord()可以让字符以整数的形式显示
+    20013
+    chr(20013) #chr()可以让整数转换成对应的字符串
+    '中'
+    >>> '\u4e2d\u6587' #还可以直接用unicode编码
+    '中文'
+
+由于Python的字符串类型是`str`，在内存中以`Unicode`表示，一个字符对应若干个字节。如果要在网络上传输，或者保存到磁盘上，就需要把`str`变为以字节为单位的`bytes`。
+
+Python对bytes类型的数据用带b前缀的单引号或双引号表示：
+
+    x = b'ABC'
+
+要注意区分`'ABC'`和`b'ABC'`，前者是`str`，后者虽然内容显示得和前者一样，但`bytes`的每个字符都只占用一个字节。
+
+以Unicode表示的str通过encode()方法可以编码为指定的bytes，例如：
+
+    >>> 'ABC'.encode('ascii')
+    b'ABC'
+    >>> '中文'.encode('utf-8')
+    b'\xe4\xb8\xad\xe6\x96\x87'
+    >>> '中文'.encode('ascii')
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)
+
+纯英文的`str`可以用`ASCII`编码为`bytes`，内容是一样的，含有中文的`str`可以用`UTF-8`编码为`bytes`。含有中文的`str`无法用`ASCII`编码，因为中文编码的范围超过了`ASCII`编码的范围，Python会报错。
+
+在`bytes`中，无法显示为ASCII字符的字节，用`\x##`显示。
+
+反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是`bytes`。要把`byte`s变为`str`，就需要用`decode()`方法：
+
+    >>> b'ABC'.decode('ascii')
+    'ABC'
+    >>> b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8')
+    '中文'
+
+要计算`str`包含多少个字符，可以用`len()`函数：
+
+    >>> len('ABC')
+    3
+    >>> len('中文')
+    2
+
+`len()`函数计算的是`str`的字符数，如果换成`bytes`，`len()`函数就计算字节数：
+
+    >>> len(b'ABC')
+    3
+    >>> len(b'\xe4\xb8\xad\xe6\x96\x87')
+    6
+    >>> len('中文'.encode('utf-8'))
+    6
+
+可见，1个中文字符经过`UTF-8`编码后通常会占用3个字节，而1个英文字符只占用1个字节。
+
+在操作字符串时，我们经常遇到`str`和`bytes`的互相转换。为了避免乱码问题，应当始终坚持使用`UTF-8`编码对`str`和`bytes`进行转换。
+
+由于Python源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为`UTF-8`编码。当`Python`解释器读取源代码时，为了让它按`UTF-8`编码读取，我们通常在文件开头写上这两行：
+
+    #!/usr/bin/env python3
+    # -*- coding: utf-8 -*-
+
+
+---
+
+### 使用List和Tuple
+
+#### List
+
+List是python中可变长度的数组，其索引不仅支持0~n-1的形式，还支持* -N ~ -1 *的索引形式。
+
+    >>> names = ['owen', 'amy', 'lyna', 'simon']
+    >>> len(names)
+    4
+    >>> names[1]
+    'amy'
+    >>> names[-2]
+    'lyna'
+
+还可以使用`append()`在末尾追加元素；在指定位置插入元素`insert()`；
+
+使用`pop()`删除末尾的元素；删除索引为i的元素`pop(i)`;
+
+通过赋值的形式替换指定索引的元素；
+
+List中的元素可以是类型不同的，也可以是另一个List；
+
+    >>> names.append('angel')
+    >>> names.insert(0, 'coco')
+    >>> names
+    ['coco', 'owen', 'amy', 'lyna', 'simon', 'angel']
+    >>> names.pop()
+    'angel'
+    >>> names.pop(1)
+    'owen'
+    >>> names
+    ['coco', 'amy', 'lyna', 'simon']
+    >>> names[0] = 'owen'
+    >>> types = ['str', 123, False, None]
+    >>> names.insert(1, types)
+    >>> names
+    ['owen', ['str', 123, False, None], 'amy', 'lyna', 'simon']
+    >>> 
+
+#### Tuple
+
+python中另一个有序容器就是`Tuple`, 该类型一旦定义就不可改变其大小和内容。不过我们还是可以通过索引访问其内容。
+
+    >>> yuanzu = ('owen', 28, 'Male', ['math', 'en', 'ch'])
+    >>> yuanzu[0]
+    'owen'
+    >>> yuanzu[1] = 29
+    Traceback (most recent call last):
+    File "<pyshell#50>", line 1, in <module>
+        yuanzu[1] = 29
+    TypeError: 'tuple' object does not support item assignment
+    >>> yuanzu[3][0] = 'music'
+    >>> yuanzu
+    ('owen', 28, 'Male', ['music', 'en', 'ch'])
+    >>> 
+
+
+不过，像变量一样，元组内对应位置存放的其实是引用关系，指向'owen'、28、'Male'和一个数组。当更改数组的内容，看起来像更改了元组，其实并没有更改元组中对应位置yuanzu[3]中的引用关系，数组还是那个数组，只不过数组中的内容被改变了，因为数组是可以被改变的。
+
+---
+
+### 条件判断
+
+    if 条件1：
+        语句1
+    elif 条件2：
+       语句2
+    else:
+        语句3
+
+### 循环
+
+第一种循环：`for ... in ...`
+
+    # 计算1到100的和
+    sum = 0
+    for x in range(1,101):
+        sum = sum + x
+    print(sum)
+
+运算结果：
+
+    F:\py>python hello.py
+    5050
+
+第二种循环：`while`
+
+    num, sum = 100, 0
+    while num > 0:
+        sum = sum + num
+        num = num - 1
+    print(sum)
+
+
+---
+
+### dict 和 set
+python也是支持字典的：
+
+    >>> dict1 = {"name" : "owen", "age" : 28}
+    >>> dict1["name"]
+    'owen'
+    >>>
+
+字典中要删除内容，可以使用`pop(key)`，对应的value也会被删除；
+
+同时也支持Set(只存key，没有value):
+
+
+    >>> set1 = set(['name', 'age', 'sex'])
+    >>> set1.add('class')
+    >>> set1
+    {'sex', 'class', 'name', 'age'}
+    >>> set1.remove('sex')
+    >>> set1
+    {'class', 'name', 'age'}
+
+
