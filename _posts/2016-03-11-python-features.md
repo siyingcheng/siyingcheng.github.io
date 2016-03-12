@@ -11,7 +11,7 @@ excerpt: Python学习笔记————Python特性。切片、迭代、列表�
 
 ---
 
-### 切片
+### 切片 slice
 
 ---
 
@@ -48,7 +48,7 @@ console 显示：
 
 ---
 
-### 迭代
+### 迭代 Iterable
 
 ---
 
@@ -81,7 +81,7 @@ console 显示：
 
 ---
 
-### 列表解析（or 构造表）
+### 列表解析（or 构造表） List comprehension
 
 ---
 
@@ -198,8 +198,7 @@ Python有个强大的建立List的方式，即List Comprehensions。
 
 ---
 
-### 迭代器
-
+### 迭代器 Iterator
 ---
 
 可以直接作用于`for`循环的数据类型有以下几种：
