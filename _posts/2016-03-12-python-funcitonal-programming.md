@@ -111,4 +111,124 @@ Python内建了`map()`和`reduce()`函数。
     [2, 4, 6, 8]
     >>>
 
- 
+
+#### sorted
+
+`sorted`传入一个可迭代的项目集合，返回一个有序的List。
+
+**`sorted(iterable[, key][, reverse])`**
+
+`key` 用于比较传入的可迭代的集合中项目之间的比较的函数。例如`key = abs`,`key = str.lower`。 默认值是`None`， 当不传入关键字参数时，就直接比较。
+
+`reverse` Boolean类型关键字参数，默认为`False`,如果设置为`Ture`则将比较的序列反转顺序后返回。
+
+sorted([2,332,-123,34,3,3212,-34], key = abs)
+[2, 3, 34, -34, -123, 332, 3212]
+>>> sorted([2,332,-123,34,3,3212,-34], key = abs, reverse = True)
+[3212, 332, -123, 34, -34, 3, 2]
+>>> sorted([2,332,-123,34,3,3212,-34])
+[-123, -34, 2, 3, 34, 332, 3212]
+
+---
+
+### 返回函数
+
+---
+
+#### 函数作为返回值
+
+高阶函数可以将函数作为参数传递，还可以将函数作为返回值，返回。
+
+    def closure_sum(*args):
+        def sum():
+            result = 0
+            for x in args:
+                result += x
+            return result
+        return sum
+
+    f = closure_sum(1,3,5,7)
+    print(f())
+
+运行结果：
+
+    F:\py>python functional.py
+    16
+
+这里`f`接收到函数`closure_sum`的返回结果`sum`依然是一个函数，不过这个函数保留了`clousure_sum`中的环境，比如`args`。尽管`clousure_sum`调用结束了，但`sum`保留了其局部变量`args`，当`f`调用其结果时即`f()`，依然可以通过`cloure_sum`的环境计算出结果。
+
+#### 闭包 closure
+
+简单来说，`closure`就是函数中引用了局部变量的内部函数。[See More](http://www.cnblogs.com/blueel/archive/2012/12/28/2837673.html)
+
+通过一个例子深刻了解下`closure`保留函数环境的意思。
+
+    def double_numbers():
+        result = []
+        for x in range(1, 4):
+            def doub():
+                return x * x
+            result.append(doub)
+        return result
+
+    s1, s2, s3 = double_numbers()
+    print(s1(), s2(), s3())
+
+这里我们期待s1, s2, s3输出：`1, 4, 9`, 但实际上：
+
+    F:\py>python functional.py
+    9 9 9
+
+是因为，`closure doub`保留了函数中的变量环境，所以并不是将`x=, x=2, x=3`时的`doub`添加到`result`中。 因为保留了环境的关系，所以`doub`中保留的`x`都是`3`。
+
+如果想要达到预期的目的则可以这样修改代码：
+
+    def double_numbers():
+        def f(i):
+            def g():
+                return i * i
+            return g
+        result = []
+        for x in range(1, 4):
+           result.append(f(x)) # 函数f(x)立即执行，因此x的当前值立即传入f()
+        return result
+
+    s1, s2, s3 = double_numbers()
+    print(s1(), s2(), s3())
+
+运行结果：
+
+    F:\py>python functional.py
+    1 4 9
+
+**所以，在使用闭包的时候要特别注意，返回一个函数时，这个函数并未执行。闭包中不要轻易使用任何可能会变化的变量，除非你知道如何正确处理他们。**
+
+---
+
+### 匿名函数 lambda
+
+---
+
+当我们传入函数时，有时并不想显示的定义函数，直接传入一个更为方便的匿名函数，在Python中也就是`lambda`。
+
+>>> list(map(lambda x : x * x, [1,3,5,7]))
+[1, 9, 25, 49]
+>>> 
+
+在这里发现，其实就是：
+
+    def f(x):
+        return x * x
+
+`lambda`表示匿名函数，这里的`x`表示参数, 匿名函数只有一个表达式，不用写`return`，表达式就是返回结果。
+
+匿名函数不用担心函数名冲突的问题，也可以和普通函数一样当参数传递，当返回值，以及赋值给一个变量等等。
+
+---
+
+### 装饰漆 Decorator
+
+---
+
+
+
