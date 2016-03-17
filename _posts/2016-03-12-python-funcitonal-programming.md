@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Python Funcitonal Programming"
-date:   2016-03-04 16:06:05
+date:   2016-03-16 16:06:05
 categories: Python
 excerpt: Python学习笔记————Funcitonal Programming
 ---
