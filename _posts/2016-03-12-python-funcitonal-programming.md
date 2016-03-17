@@ -226,9 +226,142 @@ sorted([2,332,-123,34,3,3212,-34], key = abs)
 
 ---
 
-### 装饰漆 Decorator
+### 装饰器 Decorator
 
 ---
 
+Python将一切视为`Object`的子类，函数也是，所以函数可以像变量一样被指向和传递。
+
+    >>> def now():
+        print('2016-03-18 00:55:33')
+
+        
+    >>> func = now
+    >>> func()
+    2016-03-18 00:55:33
+    >>> func.__name__
+    'now'
+    >>> now.__name__
+    'now'
+    >>> issubclass(func.__class__, object)
+    True
+
+now, 假设我们想增强函数的功能，而又不改变函数的现有定义。这种代码运行期间动态的增加功能的方式叫做`"装饰器 Decorator"`。
+
+    >>> def logger(func):
+        def wrapper(*args, **kw):
+            print('Call %s()' % func.__name__)
+            return func(*args, **kw)
+        return wrapper
+
+现在我们使用Python中的`@`语法，将`decorator`放在函数定出：
+
+    >>> @logger
+    def now_log():
+        print("2016-03-18 01:16:41")
+
+调用函数`now_log()`时，不仅会调用函数，还会在函数调用前进行自定义的`logger`打印。
+
+    >>> now_log()
+    Call now_log()
+    2016-03-18 01:16:41
+    >>> now_log.__name__
+    'wrapper'
+    >>> 
+
+其实相当调用了`logger(now_log)`, 当调用`now_log`的`__name__`属性时发现，函数的名字改变了？这是由于`logger()`是一个`Decaorator`，返回一个函数，其实原来的`now_log()`函数还在，只是现在同名的`now_log`指向新的函数`wrapper()`。
+
+`wrapper`函数的定义参数是`(*args, **kw)`,因此`wrapper`可以接收任意参数。在`wrapper`函数内，首先打印日志，再调用原始函数。
+
+如果`decorator`本身需要传入参数，那就需要编写一个返回`decorator`的高阶函数，写出来会更复杂。比如，要自定义`log`的文本：
+
+    >>> def logger_text(text):
+        def logger(func):
+            def wrapper(*args, **kw):
+                print('%s -- %s' % (text, func.__name__))
+                return func(*args, **kw)
+            return wrapper
+        return logger
+
+    >>> @logger_text('Excute')
+    def now_time():
+        print('2016-03-18 01:36:43')
+
+        
+    >>> now_time()
+    Excute -- now_time
+    2016-03-18 01:36:43
+    >>>
+
+以上两种`decorator`的定义都没有问题，但还差最后一步。因为我们讲了函数也是对象，它有`__name__`等属性，但你去看经过`decorator`装饰之后的函数，它们的`__name__`已经从原来的`'now'`变成了`'wrapper'`了。
+
+因为返回的那个`wrapper()`函数名字就是`'wrapper'`，所以，需要把原始函数的`__name__`等属性复制到`wrapper()`函数中，否则，有些依赖函数签名的代码执行就会出错。
+
+不需要编写`wrapper.__name__ = func.__name__`这样的代码，Python内置的`functools.wraps`就是干这个事的，所以，一个完整的`decorator`的写法如下：
+
+    >>> import functools
+    >>> def log(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print('Call %s()' % func.__name__)
+            return func(*args, **kw)
+        return wrapper
+
+    >>> 
+
+现在使用`Decorator`:
+
+    >>> @log
+    def now():
+        print('2016-03-18 01:46:12')
+
+        
+    >>> now()
+    Call now()
+    2016-03-18 01:46:12
+    >>> now.__name__
+    'now'
+    >>>
+
+ ---
+
+ ### 偏函数 Partial Function
+
+ ---
+
+ Python的`functools`模块提供了很多有用的功能，其中一个就是偏函数`Partial function`.
+
+     # int 将字符串转换为整数
+    print(int('100')) # 100
+
+    # 但int()函数还提供额外的base参数，默认值为10。如果传入base参数，就可以做N进制的转换：
+    print(int('100', base = 8)) # 64
+    print(int('100', base = 16)) # 256
+
+假设要转换大量的二进制字符串，每次都传入`int(x, base=2)`非常麻烦，于是，我们想到，可以定义一个`int2()`的函数，默认把`base=2`传进去：
+
+    def int2(s, base = 2):
+        return int(s, base)
+
+    print(int2('100')) # 4
 
 
+`functools.partial`就是帮助我们创建一个偏函数的，不需要我们自己定义`int2()`，可以直接使用下面的代码创建一个新的函数int2：
+
+    import functools
+    int2 = functools.partial(int, base = 2)
+
+    print(int2('100'))  # 4
+
+所以，简单总结`functools.partial`的作用就是，把一个函数的某些参数给固定住（也就是设置默认值），返回一个新的函数，调用这个新函数会更简单。
+
+注意到上面的新的`int2`函数，仅仅是把`base`参数重新设定默认值为2，但也可以在函数调用时传入其他值.
+
+
+---
+
+### 阶段暂停
+
+---
+
+*因为现在求职得到一份基于Ruby的自动化测试工作，所以先暂时停止学习Python和些Python的学习笔记。不过以后有空了，I will be back!!!*
