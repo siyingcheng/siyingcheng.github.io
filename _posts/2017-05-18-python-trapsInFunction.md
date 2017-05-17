@@ -68,3 +68,11 @@ def add_end(l = None):
 print(add_end())
 print(add_end())
 ```
+
+Result：
+```
+Now l is : []
+['END']
+Now l is : []
+['END']
+```
