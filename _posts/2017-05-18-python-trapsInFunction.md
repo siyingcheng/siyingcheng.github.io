@@ -56,3 +56,15 @@ p add_end
 
 我现在还不理解这种奇怪的设计思维，姑且先记下。
 
+解决方案：
+```python
+def add_end(l = None):
+	if l is None:
+		l = []
+	print("Now l is :", l)
+	l.append('END')
+	return l
+
+print(add_end())
+print(add_end())
+```
