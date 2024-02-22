@@ -1,0 +1,19 @@
+{
+  "name": "smile-pages",
+  "version": "1.0.0",
+  "description": "A pages site build by VitePress for smile project",
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "mermaid": "^10.6.1",
+    "vitepress": "^1.0.0-rc.31",
+    "vitepress-plugin-mermaid": "^2.0.16"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "author": "Simon Si",
+  "license": "ISC"
+}
