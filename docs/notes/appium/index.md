@@ -9,10 +9,10 @@ head:
 tags:
   - Appium
 categories:
-  - Automation Framework
+  - Notes
 ---
 
-<Badge type="tip" text="Appium" /><Badge type="warning" text="Automation Framework" />
+<Badge type="tip" text="Appium" /><Badge type="warning" text="Notes" />
 
 ::: info
 This article will introduce Appium installation, setup of basic drivers, and basic

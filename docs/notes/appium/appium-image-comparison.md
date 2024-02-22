@@ -8,10 +8,10 @@ head:
 tags:
   - Appium
 categories:
-  - Automation Framework
+  - Notes
 ---
 
-# Image Comparison <Badge type="tip" text="Appium" /><Badge type="warning" text="Automation Framework" />
+# Image Comparison <Badge type="tip" text="Appium" /><Badge type="warning" text="Notes" />
 
 ## Image Comparison Feature
 

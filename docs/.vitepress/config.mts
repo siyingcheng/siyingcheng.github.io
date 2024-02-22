@@ -142,6 +142,38 @@ const postmanSideBar = [
   },
 ];
 
+const navigator = [
+  { text: "Home", link: "/" },
+  {
+    text: "Notes",
+    items: [
+      {
+        text: "SQL",
+        link: "/notes/sql/",
+      },
+      {
+        text: "Postman",
+        link: "/notes/postman/",
+      },
+      {
+        text: "Selenium",
+        link: "/notes/selenium/",
+      },
+      {
+        text: "📱 Appium",
+        link: "/notes/appium/",
+      },
+    ],
+    activeMatch: "/notes/",
+  },
+  {
+    text: "Software",
+    link: "/software/opencv4nodejs-macos",
+    activeMatch: "/software/",
+  },
+  { text: "About", link: "/about/" },
+];
+
 // https://vitepress.dev/reference/site-config
 export default withMermaid(
   defineConfig({
@@ -150,33 +182,7 @@ export default withMermaid(
     base: "/",
     themeConfig: {
       // https://vitepress.dev/reference/default-theme-config
-      nav: [
-        { text: "Home", link: "/" },
-        {
-          text: "Notes",
-          items: [
-            {
-              text: "SQL",
-              link: "/notes/sql/",
-            },
-            {
-              text: "Postman",
-              link: "/notes/postman/",
-            },
-            {
-              text: "📱 Appium",
-              link: "/notes/appium/",
-            },
-          ],
-          activeMatch: "/notes/",
-        },
-        {
-          text: "Software",
-          link: "/software/opencv4nodejs-macos",
-          activeMatch: "/software/",
-        },
-        { text: "About", link: "/about/" },
-      ],
+      nav: navigator,
       sidebar: {
         "/notes/appium/": appiumSideBar,
         "/software/": softwareSidebar,

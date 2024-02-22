@@ -9,10 +9,10 @@ head:
 tags:
   - Appium
 categories:
-  - Automation Framework
+  - Notes
 ---
 
-# How to swipe to element till visible <Badge type="tip" text="Appium" /><Badge type="warning" text="Automation Framework" />
+# How to swipe to element till visible <Badge type="tip" text="Appium" /><Badge type="warning" text="Notes" />
 
 ## Approach 1: using `driver.perform Sequence`
 

@@ -8,10 +8,10 @@ head:
 tags:
   - Appium
 categories:
-  - Automation Framework
+  - Notes
 ---
 
-# Limitations of Appium <Badge type="tip" text="Appium" /><Badge type="warning" text="Automation Framework" />
+# Limitations of Appium <Badge type="tip" text="Appium" /><Badge type="warning" text="Notes" />
 
 While Appium offers significant benefits for mobile app testing, it also comes with
 limitations and disadvantages that you should be aware of:
@@ -34,7 +34,7 @@ limitations and disadvantages that you should be aware of:
 - Dependency on server: Appium requires a server to run, adding another layer of complexity to your testing environment.
 - Limited debugging capabilities: Debugging automated tests can be challenging due to the separation between the script and the app.
 - Community-driven support: While the Appium community is supportive, official support options are limited compared to commercial solutions.
-  Overall, Appium is a powerful tool for mobile app testing, but its limitations and disadvantages should be considered when choosing a test automation framework.
+  Overall, Appium is a powerful tool for mobile app testing, but its limitations and disadvantages should be considered when choosing a test Notes.
 
 **Here are some additional factors to consider:**
 

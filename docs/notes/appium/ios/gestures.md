@@ -9,10 +9,10 @@ head:
 tags:
   - Appium
 categories:
-  - Automation Framework
+  - Notes
 ---
 
-# IOS Gestures <Badge type="tip" text="Appium" /><Badge type="warning" text="Automation Framework" />
+# IOS Gestures <Badge type="tip" text="Appium" /><Badge type="warning" text="Notes" />
 
 ::: tip
 Refer from [_here_](https://github.com/clarabez/appium-1/blob/master/docs/en/writing-running-appium/ios/ios-xctest-mobile-gestures.md)

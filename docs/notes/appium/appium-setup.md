@@ -9,10 +9,10 @@ head:
 tags:
   - Appium
 categories:
-  - Automation Framework
+  - Notes
 ---
 
-# Appium Setup <Badge type="tip" text="Appium" /><Badge type="warning" text="Automation Framework" />
+# Appium Setup <Badge type="tip" text="Appium" /><Badge type="warning" text="Notes" />
 
 > [Official Documentation](https://appium.io/)
 

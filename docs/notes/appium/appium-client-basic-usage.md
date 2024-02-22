@@ -9,10 +9,10 @@ head:
 tags:
   - Appium
 categories:
-  - Automation Framework
+  - Notes
 ---
 
-# Appium Client Basic Usage <Badge type="tip" text="Appium" /><Badge type="warning" text="Automation Framework" />
+# Appium Client Basic Usage <Badge type="tip" text="Appium" /><Badge type="warning" text="Notes" />
 
 ## Java client
 
