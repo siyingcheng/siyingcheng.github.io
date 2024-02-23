@@ -142,6 +142,19 @@ const postmanSideBar = [
   },
 ];
 
+const seleniumSideBar = [
+  {
+    text: "Selenium",
+    link: "/notes/selenium/",
+    items: [
+      {
+        text: "WebDriver",
+        link: "/notes/selenium/WebDriver.md",
+      },
+    ],
+  },
+];
+
 const navigator = [
   { text: "Home", link: "/" },
   {
@@ -188,6 +201,7 @@ export default withMermaid(
         "/software/": softwareSidebar,
         "/notes/sql/": sqlSideBar,
         "/notes/postman/": postmanSideBar,
+        "/notes/selenium": seleniumSideBar,
       },
       socialLinks: [{ icon: "github", link: "https://github.com/siyingcheng" }],
       lastUpdated: {
