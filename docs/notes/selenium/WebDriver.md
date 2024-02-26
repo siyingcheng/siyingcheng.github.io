@@ -1014,3 +1014,79 @@ A representation of a pen stylus kind of pointer input for interacting with a we
 
 A representation of a scroll wheel input device for interacting with a web page.
 [_Here_](https://www.selenium.dev/documentation/webdriver/actions_api/wheel/) is the link to the official documentation.
+
+## Colors
+
+```java
+import org.openqa.selenium.support.Color;
+
+private final Color HEX_Color = Color.fromString("#2F7ED8");
+private final Color RGB_Color = Color.fromString("rgb(255, 255, 255)");
+private final Color RGB_Color = Color.fromString("rgb(40%, 20%, 40%)");
+private final Color RGBA_Color = Color.fromString("rgba(255, 255, 255, 0.5)");
+private final Color RGBA_Color = Color.fromString("rgba(40%, 20%, 40%, 0.5)");
+private final Color HSL_Color = Color.fromString("hsl(100, 0%, 50%)");
+private final Color HSLA_Color = Color.fromString("hsla(100, 0%, 50%, 0.5)");
+
+private final Color BLACK = Color.fromString("black");
+private final Color CHOCOLATE = Color.fromString("chocolate");
+private final Color HOTPINK = Color.fromString("hotpink");
+
+private final Color TRANSPARENT = Color.fromString("transparent");
+
+Color loginButtonColor =
+        Color.fromString(driver.findElement(By.id("login")).getCssValue("color"));
+
+Color loginButtonBackgroundColor =
+        Color.fromString(driver.findElement(By.id("login")).getCssValue("background-color"));
+
+assert loginButtonBackgroundColor.equals(HOTPINK);
+
+assert loginButtonBackgroundColor.asHex().equals("#ff69b4");
+assert loginButtonBackgroundColor.asRgba().equals("rgba(255, 105, 180, 1)");
+assert loginButtonBackgroundColor.asRgb().equals("rgb(255, 105, 180)");
+```
+
+## Select Lists
+
+The Select object will now give you a series of commands that allow you to interact
+with a `<select>` element.
+
+Note that this class only works for HTML elements select and option. It is possible
+to design drop-downs with JavaScript overlays using div or li, and this class
+will not work for those.
+
+First locate a `<select>` element, then use it to initialize a Select object.
+Note that as of Selenium 4.5, you can’t create a Select object if the `<select>`
+element is disabled.
+
+```java
+WebElement selectElement = driver.findElement(By.name("selectomatic"));
+// Create class
+Select select = new Select(selectElement);
+// List options
+List<WebElement> optionList = select.getOptions();
+// Selected options
+List<WebElement> selectedOptionList = select.getAllSelectedOptions();
+// select by text
+select.selectByVisibleText("Four");
+// select by value
+select.selectByValue("two");
+// select by index
+select.selectByIndex(3);
+```
+
+**Disabled options:** Options with a `disabled` attribute may not be selected.
+
+```java
+Assertions.assertThrows(UnsupportedOperationException.class, () -> {
+        select.selectByValue("disabled");
+});
+```
+
+**De-select option:** Only multiple select type select lists can have options de-selected.
+You can repeat these methods for each element you want to select.
+
+```java
+select.deselectByValue("eggs");
+```
