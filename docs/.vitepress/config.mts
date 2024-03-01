@@ -151,6 +151,10 @@ const seleniumSideBar = [
         text: "WebDriver",
         link: "/notes/selenium/WebDriver.md",
       },
+      {
+        text: "Test Practices",
+        link: "/notes/selenium/Test_Practices.md",
+      },
     ],
   },
 ];
