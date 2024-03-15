@@ -159,6 +159,19 @@ const seleniumSideBar = [
   },
 ];
 
+const jenkinsSideBar = [
+  {
+    text: "Jenkins",
+    link: "/notes/jenkins/",
+    items: [
+      {
+        text: "Installing",
+        link: "/notes/jenkins/Installing.md",
+      },
+    ],
+  },
+];
+
 const navigator = [
   { text: "Home", link: "/" },
   {
@@ -179,6 +192,10 @@ const navigator = [
       {
         text: "📱 Appium",
         link: "/notes/appium/",
+      },
+      {
+        text: "Jenkins",
+        link: "/notes/jenkins/",
       },
     ],
     activeMatch: "/notes/",
@@ -205,7 +222,8 @@ export default withMermaid(
         "/software/": softwareSidebar,
         "/notes/sql/": sqlSideBar,
         "/notes/postman/": postmanSideBar,
-        "/notes/selenium": seleniumSideBar,
+        "/notes/selenium/": seleniumSideBar,
+        "/notes/jenkins/": jenkinsSideBar,
       },
       socialLinks: [{ icon: "github", link: "https://github.com/siyingcheng" }],
       lastUpdated: {
