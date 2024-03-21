@@ -194,7 +194,7 @@ const navigator = [
         link: "/notes/selenium/",
       },
       {
-        text: "📱 Appium",
+        text: "Appium",
         link: "/notes/appium/",
       },
       {
