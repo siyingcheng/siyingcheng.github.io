@@ -168,6 +168,10 @@ const jenkinsSideBar = [
         text: "Installing",
         link: "/notes/jenkins/Installing.md",
       },
+      {
+        text: "Pipeline",
+        link: "/notes/jenkins/Pipeline.md",
+      },
     ],
   },
 ];

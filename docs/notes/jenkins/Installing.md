@@ -64,3 +64,11 @@ Or, with `logs`:
 ```shell
 docker logs -f jenkins-blueocean
 ```
+
+## Update Site for Plugins
+
+If you are in China, you may need to update the site for plugins.
+
+Navigate to _Manage Jenkins -> Plugins -> Advanced settings_, replace the default
+site `https://updates.jenkins.io/download/plugins` with
+`https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json`.
