@@ -201,6 +201,10 @@ const navigator = [
         text: "Jenkins",
         link: "/notes/jenkins/",
       },
+      {
+        text: "Playwright",
+        link: "/notes/playwright/",
+      },
     ],
     activeMatch: "/notes/",
   },
