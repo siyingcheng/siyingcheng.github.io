@@ -176,6 +176,31 @@ const jenkinsSideBar = [
   },
 ];
 
+const playwrightSideBar = [
+  {
+    text: "Playwright",
+    link: "/notes/playwright/",
+    items: [
+      {
+        text: "Running and Debugging",
+        link: "/notes/playwright/run-and-debug.md",
+      },
+      {
+        text: "Locators",
+        link: "/notes/playwright/locators.md",
+      },
+      {
+        text: "Annotations",
+        link: "/notes/playwright/annotations.md",
+      },
+      {
+        text: "Recording",
+        link: "/notes/playwright/recording.md",
+      },
+    ],
+  },
+];
+
 const navigator = [
   { text: "Home", link: "/" },
   {
@@ -232,6 +257,7 @@ export default withMermaid(
         "/notes/postman/": postmanSideBar,
         "/notes/selenium/": seleniumSideBar,
         "/notes/jenkins/": jenkinsSideBar,
+        "/notes/playwright/": playwrightSideBar,
       },
       socialLinks: [{ icon: "github", link: "https://github.com/siyingcheng" }],
       lastUpdated: {
