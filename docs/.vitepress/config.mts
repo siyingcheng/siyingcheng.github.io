@@ -201,6 +201,31 @@ const playwrightSideBar = [
   },
 ];
 
+const javaSideBar = [
+  {
+    text: "Java",
+    link: "/queries/java/",
+    items: [
+      {
+        text: "Data Types",
+        link: "/queries/java/data-types.md",
+      },
+      {
+        text: "Array",
+        link: "/queries/java/array.md",
+      },
+      {
+        text: "Enum",
+        link: "/queries/java/enum.md",
+      },
+      {
+        text: "OOP",
+        link: "/queries/java/oop.md",
+      },
+    ],
+  },
+];
+
 const navigator = [
   { text: "Home", link: "/" },
   {
@@ -238,6 +263,16 @@ const navigator = [
     link: "/software/opencv4nodejs-macos",
     activeMatch: "/software/",
   },
+  {
+    text: "Queries",
+    items: [
+      {
+        text: "Java",
+        link: "/queries/java/",
+      },
+    ],
+    activeMatch: "/queries/",
+  },
   { text: "About", link: "/about/" },
 ];
 
@@ -258,6 +293,7 @@ export default withMermaid(
         "/notes/selenium/": seleniumSideBar,
         "/notes/jenkins/": jenkinsSideBar,
         "/notes/playwright/": playwrightSideBar,
+        "/queries/java/": javaSideBar,
       },
       socialLinks: [{ icon: "github", link: "https://github.com/siyingcheng" }],
       lastUpdated: {
