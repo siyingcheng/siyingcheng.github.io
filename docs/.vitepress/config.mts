@@ -222,6 +222,10 @@ const javaSideBar = [
         text: "OOP",
         link: "/queries/java/oop.md",
       },
+      {
+        text: "Methods",
+        link: "/queries/java/method.md",
+      },
     ],
   },
 ];
