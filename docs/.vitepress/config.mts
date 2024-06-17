@@ -226,6 +226,18 @@ const javaSideBar = [
         text: "Methods",
         link: "/queries/java/method.md",
       },
+      {
+        text: "Constructor",
+        link: "/queries/java/constructor.md",
+      },
+      {
+        text: "String",
+        link: "/queries/java/string.md",
+      },
+      {
+        text: "IO",
+        link: "/queries/java/io.md",
+      },
     ],
   },
 ];

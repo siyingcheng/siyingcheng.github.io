@@ -24,3 +24,14 @@ categories:
 ::: details Answer
 `Compile time polymorphism`: There are two types of polymorphism in Java. Compile time polymorphism (overloading) and run time polymorphism (overriding).
 :::
+
+## A class member declared protected becomes a member of subclass of which type?
+
+- static member
+- private member
+- protected member
+- public member
+
+::: details Answer
+`private member`: Explanation: A class member declared protected becomes a private member of subclass.
+:::
