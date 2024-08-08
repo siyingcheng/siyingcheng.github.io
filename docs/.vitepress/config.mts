@@ -242,6 +242,19 @@ const javaSideBar = [
   },
 ];
 
+const cucumberJsBar = [
+  {
+    text: "Cucumber - JS",
+    link: "/notes/cucumber-js/",
+    items: [
+      {
+        text: "Queries",
+        link: "/notes/cucumber-js/queries.md",
+      },
+    ],
+  },
+];
+
 const navigator = [
   { text: "Home", link: "/" },
   {
@@ -270,6 +283,10 @@ const navigator = [
       {
         text: "Playwright",
         link: "/notes/playwright/",
+      },
+      {
+        text: "Cucumber - JS",
+        link: "/notes/cucumber-js/",
       },
     ],
     activeMatch: "/notes/",
@@ -309,6 +326,7 @@ export default withMermaid(
         "/notes/selenium/": seleniumSideBar,
         "/notes/jenkins/": jenkinsSideBar,
         "/notes/playwright/": playwrightSideBar,
+        "/notes/cucumber-js/": cucumberJsBar,
         "/queries/java/": javaSideBar,
       },
       socialLinks: [{ icon: "github", link: "https://github.com/siyingcheng" }],
