@@ -124,7 +124,7 @@ To write SARGABLE queries:
 - If we need to use a function on a column, consider creating a computed column
   or a function-based index, if the database system support it.
 
-::: detail Click to view some examples
+::: details Click to view some examples
 
 ```sql
 SELECT ... WHERE Year(myDate) = 2008; -- Bad

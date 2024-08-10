@@ -121,6 +121,10 @@ const sqlSideBar = [
         text: "Questions Collections",
         link: "/notes/sql/Questions-Collections.md",
       },
+      {
+        text: "Troubleshooting",
+        link: "/notes/sql/Troubleshooting.md",
+      },
     ],
   },
 ];
